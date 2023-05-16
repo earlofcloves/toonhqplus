@@ -50,7 +50,7 @@ async function THQPlus() {
    } 
 
    function neighborhood(street) {
-      if (tc.includes(street)) {return 'Toon Cntl'} 
+      if (tc.includes(street)) {return 'Ttown Cntrl'} 
       else if (dk.includes(street)) {return "D. Dock"} 
       else if (dg.includes(street)) {return "D. Garden"} 
       else if (mm.includes(street)) {return "M. Melodyland"} 
