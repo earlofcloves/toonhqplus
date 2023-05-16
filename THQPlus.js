@@ -1,6 +1,6 @@
 async function THQPlus() {
    var inv;
-   const tc = ['Loopy Lane','Punchline Place','Silly Street','Goofy Speedway','Toontown Central Playground'],
+   const tc = ['Loopy Lane','Punchline Place','Silly Street','Goofy Speedway'],
          dk = ['Barnacle Boulevard','Lighthouse Lane','Seaweed Street','Sellbot HQ'],
          dg = ['Elm Street','Maple Street','Oak Street'],
          mm = ['Alto Avenue','Baritone Boulevard','Tenor Terrace'],
