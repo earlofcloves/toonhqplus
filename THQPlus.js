@@ -1,4 +1,4 @@
-async function THQ_GroupPlus() {
+async function THQPlus() {
    var inv;
    const tc = ['Loopy Lane','Punchline Place','Silly Street','Goofy Speedway','Toontown Central Playground'],
          dk = ['Barnacle Boulevard','Lighthouse Lane','Seaweed Street','Sellbot HQ'],
@@ -12,8 +12,7 @@ async function THQ_GroupPlus() {
          cb = ['Short Change','Penny Pincher','Tightwad','Bean Counter','Number Cruncher','Money Bags','Loan Shark','Robber Baron','Chief Financial Officer'],
          sb = ['Cold Caller','Telemarketer','Name Dropper','Glad Hander','Mover & Shaker','Two-Face','The Mingler','Mr. Hollywood','Vice President'];
 
-   updateTHQg();
-   setInterval(updateTHQg,5000);
+   updateTHQg(); setInterval(updateTHQg,5000);
 
    async function updateTHQg() {
       await updateInvasions(); 
@@ -62,4 +61,4 @@ async function THQ_GroupPlus() {
    } 
 }
 
-THQ_GroupPlus();
+THQPlus();
