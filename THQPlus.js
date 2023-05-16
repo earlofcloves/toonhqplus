@@ -1,60 +1,65 @@
-<p style="text-align:center"><span style="font-size:36px"><span style="color:#0000cc"><strong><span style="font-family:Comic Sans MS,cursive">ToonHQ Plus</span></strong></span></span><span style="font-size:8px"><span style="color:#0000cc"><strong><span style="font-family:Comic Sans MS,cursive"> </span></strong></span></span><br />
-<span style="font-size:18px"><span style="font-family:Comic Sans MS,cursive">by </span></span><strong><span style="font-size:22px"><span style="font-family:Comic Sans MS,cursive"><em>Earl of Cloves</em></span></span></strong><br />
-<span style="font-size:16px"><span style="font-family:Comic Sans MS,cursive">(more TTR stuff available <a href="https://github.com/earlofcloves/ttrstuff" target="_blank">here</a>)<br />
-&nbsp;</span></span></p>
+async function THQ_GroupPlus() {
+   var inv;
+   const tc = ['Loopy Lane','Punchline Place','Silly Street','Goofy Speedway','Toontown Central Playground'],
+         dk = ['Barnacle Boulevard','Lighthouse Lane','Seaweed Street','Sellbot HQ'],
+         dg = ['Elm Street','Maple Street','Oak Street'],
+         mm = ['Alto Avenue','Baritone Boulevard','Tenor Terrace'],
+         br = ['Polar Place','Sleet Street','Walrus Way','Lawbot HQ'],
+         dd = ['Lullaby Lane','Pajama Place','Cashbot HQ'],
+         cd = ['Bossbot HQ'];
+   const bb = ['Flunky','Pencil Pusher','Yesman','Micro\x03manager','Downsizer','Head Hunter','Corporate Raider','The Big Cheese','Chief Executive Officer'],
+         lb = ['Bottom Feeder','Bloodsucker','Double Talker','Ambulance Chaser','Back Stabber','Spin Doctor','Legal Eagle','Big Wig','Chief Justice'],
+         cb = ['Short Change','Penny Pincher','Tightwad','Bean Counter','Number Cruncher','Money Bags','Loan Shark','Robber Baron','Chief Financial Officer'],
+         sb = ['Cold Caller','Telemarketer','Name Dropper','Glad Hander','Mover & Shaker','Two-Face','The Mingler','Mr. Hollywood','Vice President'];
 
-<p style="text-align:center">&nbsp;</p>
+   updateTHQg();
+   setInterval(updateTHQg,5000);
 
-<p><span style="color:#0000cc"><u><strong><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive">What is it?</span></span></strong></u></span></p>
+   async function updateTHQg() {
+      await updateInvasions(); 
+      updateGroups();
+   }
 
-<p style="margin-left:40px"><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366">ToonHQ+ helps improve your <a href="https://www.toontownrewritten.com/" target="_blank">ToontownRewritten</a> experience by enhancing the <a href="https://toonhq.org" target="_blank">ToonHQ</a> site with additional information/features that build upon the already great tools that ToonHQ provides.<br />
-&nbsp;</span></span></span></p>
+   async function updateInvasions() {
+      let response;
+      response = await fetch('https://api.allorigins.win/get?url='+encodeURIComponent('https://www.toontownrewritten.com/api/invasions'),{mode:"cors"});
+      const jresp = await response.json();
+      const contents = JSON.parse(jresp.contents);
+      inv=contents.invasions;
+   }
 
-<p><span style="color:#0000cc"><u><strong><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive">How does it work?</span></span></strong></u></span></p>
+   function updateGroups() {
+      const groups=document.getElementsByClassName("info-card__content");
+      Array.from(groups).forEach(g=>{
+         const invtype = g.childNodes[0]; invtypev=invtype.innerText;
+         const street = g.childNodes[1]; streetv=street.innerText.split(" (")[0];
+         const district = g.childNodes[2]; districtv=district.innerText.split("\n")[0];
+         if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>('+neighborhood(streetv)+')</i>'}
+         if (inv[districtv]) {
+            const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled;  
+            district.innerHTML=districtv+'<br><b><i>Invasion: '+inv[districtv].type.replace("o\x03","o")+' ('+cogType(inv[districtv].type)+')</i></b>';
+         }
+      });
+   }  
 
-<p style="margin-left:40px"><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366">ToonHQ+ consists of a </span><a href="https://en.wikipedia.org/wiki/Bookmarklet" target="_blank"><span style="color:#003366">bookmarklet</span></a><span style="color:#003366"> that temporarily adds javascript to the ToonHQ webpages within your browser, which turns on the additional features. Because there is no plugin involved, there is no need to make modifications to your browser or do any other installation -- you simply create a new ToonHQ+ bookmark in your browser, and click on it when you are on ToonHQ to enable the added features. If you don&#39;t want to create a bookmark, you can even just cut and paste a command into your browser&#39;s address bar while you are on the ToonHQ site, and ToonHQ+ will be enabled!&nbsp; &nbsp;<br />
-&nbsp;</span></span></span></p>
+   function cogType(cog) {
+      if (bb.includes(cog)) {return 'Bbot'} 
+      else if (lb.includes(cog)) {return 'Lbot'} 
+      else if (cb.includes(cog)) {return 'Cbot'} 
+      else if (sb.includes(cog)) {return 'Sbot'} 
+      else {return 'Unknown Cog Type'}
+   } 
 
-<p><span style="color:#0000cc"><u><strong><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive">ToonHQ+ Features</span></span></strong></u></span></p>
+   function neighborhood(street) {
+      if (tc.includes(street)) {return 'Toon Cntl'} 
+      else if (dk.includes(street)) {return "D. Dock"} 
+      else if (dg.includes(street)) {return "D. Garden"} 
+      else if (mm.includes(street)) {return "M. Melodyland"} 
+      else if (br.includes(street)) {return "The Brrrgh"} 
+      else if (dd.includes(street)) {return "D. Dreamland"} 
+      else if (cd.includes(street)) {return "Chip 'n Dale's"} 
+      else {return 0}
+   } 
+}
 
-<p><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366">Click the link(s) below to explore the currently available ToonHQ+ enhancements -- we plan on adding more soon!</span></span></span></p>
-
-<ul>
-	<li><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366"><a href="https://earlofcloves.github.io/toonhqplus/thqplusgroups.jpg" target="_blank">ToonHQ+ Groups Pages Enhancement</a><br />
-	&nbsp;</span></span></span></li>
-</ul>
-
-<p><span style="color:#0000cc"><u><strong><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive">ToonHQ+ Activation Instructions</span></span></strong></u></span></p>
-
-<p style="margin-left:40px"><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366">In order to activate the ToonHQ+ you must run the ToonHQ+ javascript bookmarklet</span><span style="color:#003366"> code while you are on the ToonHQ site. There are two options for doing this: </span></span></span></p>
-
-<ul>
-	<li><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366"><u><strong>Option 1</strong></u>:&nbsp; Create a bookmark in your browser, and click on it when you are on the ToonHQ site. To do this:</span></span></span>
-
-	<ul>
-		<li><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366">Make sure the Bookmarks or Favorites bar is open and visible in your browser</span></span></span></li>
-		<li><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366">Click and drag this link: </span><em><strong><a href="javascript:(function(){var j=document.createElement('script');j.setAttribute('src','https://earlofcloves.github.io/THQ_GroupPlus/THQ_GroupPlus.js');document.body.appendChild(j)}())"><span style="color:#c0392b">ToonHQ+</span></a></strong></em><span style="color:#003366"> to your Bookmarks/Favorites bar (or right click and select &quot;bookmark link&quot;, &quot;Add link to Bookmarks&quot;, etc), and the bookmark will be created. </span></span></span><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366">You may rename the bookmark if you wish</span></span></span></li>
-		<!--
-href="javascript:(function(){var j=document.createElement('script');j.setAttribute('src','https://earlofcloves.github.io/THQ_GroupPlus/THQ_GroupPlus.js');document.body.appendChild(j)}())"
--->
-		<li><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366">Once the bookmark is created, click on it whenever the ToonHQ site is loaded (or reloaded) to activate ToonHQ+. You can either click on the bookmark from the Bookmarks/Favorites bar, or from the Menu (some versions of Edge require clicking on it from the Favorites bar)</span></span></span></li>
-	</ul>
-	</li>
-</ul>
-
-<ul>
-	<li><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366"><u><strong>Option 2</strong></u>:&nbsp; Go to the ToonHQ site, and paste the javasscript bookmarklet code below into you browser address bar:</span></span></span>
-
-	<ul>
-		<li><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366">Clear out all text in the address bar </span></span></span></li>
-		<li><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366">type &quot;javascript:&quot; (no quotes) in the address bar, and after &quot;javascript&quot; cut and paste the following:</span></span></span>
-		<ul>
-			<li><span style="font-size:14px"><span style="font-family:Courier New,Courier,monospace">(function(){var j=document.createElement(&#39;script&#39;);j.setAttribute(&#39;src&#39;,&#39;https://earlofcloves.github.io/THQ_GroupPlus/THQ_GroupPlus.js&#39;);document.body.appendChild(j)}())</span></span></li>
-		</ul>
-		</li>
-		<li><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366">The address bar should now begin with &quot;</span></span></span><span style="font-size:14px"><span style="font-family:Courier New,Courier,monospace"><span style="color:#003366">javascript: (function() (var j=...</span></span></span><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366">&quot;. Hit enter, and ToonHQ+ should be activated. </span></span></span></li>
-	</ul>
-	</li>
-</ul>
-
-<p style="margin-left:40px"><span style="font-size:20px"><span style="font-family:Comic Sans MS,cursive"><span style="color:#003366">Each time you open or reopen the ToonHQ site tab/window, you will need either click on the bookmark or rerun the command from Option 2.</span></span></span></p>
+THQ_GroupPlus();
