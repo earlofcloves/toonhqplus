@@ -35,7 +35,7 @@ async function THQPlus() {
    function addGroupNotify () {
       if (document.getElementById("gnb")) {return}
       let gnb=document.createElement('button');
-      gnb.id="thqp-gnb";
+      gnb.id="gnb";
       gnb.className="btn subnav__btn ml-3";
       gnb.innerText="Group Notification";
       gnb.onclick=()=>alert("Coming Soon");
