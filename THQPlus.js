@@ -33,7 +33,7 @@ async function THQPlus() {
    }
 
    function addGroupNotify () {
-      if (document.getElementById("thqp-gnb")) {return}
+      if (document.getElementById("gnb")) {return}
       let gnb=document.createElement('button');
       gnb.id="thqp-gnb";
       gnb.className="btn subnav__btn ml-3";
