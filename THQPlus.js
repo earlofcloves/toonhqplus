@@ -20,7 +20,7 @@
    function killAds() {
       ads.forEach(ad=>{
          let e=document.getElementById(ad);
-         if (!e) {e=document.getElementsByClassName(ad)[0]}
+ //        if (!e) {e=document.getElementsByClassName(ad)[0]}
          if (e) {e.remove()}
       });
    }
