@@ -140,7 +140,7 @@ async function THQPlus() {
          let [dispname,type,lev]=coginfo;
          if (dispname=="") {dispname=cog}
          lev=`${lev}-${Number(lev)+4}`;
-         return `${dispname} (${lookup.cog.decode[type]}${lev}`;
+         return `${dispname} ${lookup.cog.decode[type]} L${lev}`;
       }
       else {return `Cogtype ${cog} not found`}
    }
