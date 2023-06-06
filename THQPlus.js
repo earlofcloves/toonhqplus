@@ -119,7 +119,7 @@ async function THQPlus() {
          if (inv[districtv]) {
             const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled;  
             // district.innerHTML=districtv+'<br><b><i>Invasion: '+inv[districtv].type.replace("o\x03","o").replace("\u0003","")+' ('+cogType(inv[districtv].type)+')</i></b>';
-            district.innerHTML=districtv+'<br><b><i>Invasion: '+invInfo(inv[districtv].type)+'</i></b>';
+            district.innerHTML=districtv+'<br><b><i>Invasion '+invInfo(inv[districtv].type)+'</i></b>';
             // console.log(invInfo(inv[districtv].type));          
             
          }
@@ -140,7 +140,7 @@ async function THQPlus() {
          let [dispname,type,lev]=coginfo;
          if (dispname=="") {dispname=cog}
          lev=`${lev}-${Number(lev)+4}`;
-         return `${dispname} (${lookup.cog.decode[type]} L${lev})`;
+         return `${dispname} (${lookup.cog.decode[type]}${lev}`;
       }
       else {return `Cogtype ${cog} not found`}
    }
