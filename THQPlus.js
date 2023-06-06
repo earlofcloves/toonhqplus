@@ -116,7 +116,7 @@ async function THQPlus() {
          console.log('xxx ',g,invtype);
          const street = g.childNodes[1]; streetv=street.innerText.split(" (")[0];
          const district = g.childNodes[2]; districtv=district.innerText.split("\n")[0];
-         if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>('+neighborhood(streetv)+')</i>'}
+         if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>'+neighborhood(streetv)+'</i>'}
          if (inv[districtv] && invtypev.includes('BUILDING')) {
             //const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled; 
             district.innerHTML=`${districtv}<br><b><i>${invInfo(inv[districtv].type)}</i></b>`;      
@@ -137,7 +137,7 @@ async function THQPlus() {
    
    function neighborhood(street) {
       const n=lookup.street[street];
-      if (n) {return `(${n})`} else {return ""}
+      if (n) {return `(${n})`} else {return 0}
    }
 
 }
