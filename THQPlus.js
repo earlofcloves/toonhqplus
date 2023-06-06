@@ -1,5 +1,65 @@
-;async function THQPlus() {
+async function THQPlus() {
    var inv;
+   const lookup = {
+            street: {
+               'Loopy Lane': 'Ttown Cntrl',
+               'Punchline Place': 'Ttown Cntrl',
+               'Silly Street': 'Ttown Cntrl',
+               'Goofy Speedway': 'Ttown Cntrl',
+               'Barnacle Boulevard': "D. Dock",
+               'Lighthouse Lane': "D. Dock",
+               'Seaweed Street': "D. Dock",
+               'Elm Street': "D. Garden",
+               'Maple Street': "D. Garden",
+               'Oak Street': "D. Garden",
+               'Sellbot HQ': "D. Garden",
+               'Alto Avenue': "M. Melodyland",
+               'Baritone Boulevard': "M. Melodyland",
+               'Tenor Terrace': "M. Melodyland",
+               'Polar Place': "The Brrrgh", 
+               'Sleet Street': "The Brrrgh",
+               'Walrus Way': "The Brrrgh",
+               'Lawbot HQ': "The Brrrgh",
+               'Lullaby Lane': "D. Dreamland",
+               'Pajama Place': "D. Dreamland",
+               'Cashbot HQ': "D. Dreamland",
+               'Bossbot HQ': "Chip 'n Dale's"
+            },
+            cog: {
+               'Flunky':                  ["","B",1],
+               'Pencil Pusher':           ["Pencil Pusher","B",2],
+               'Yesman':                  ["","B",3],
+               'Micro\x03manager':        ["MicroManager","B",4],
+               'Downsizer':               ["","B",5],
+               'Head Hunter':             ["","B",6],
+               'Corporate Raider':        ["Corp Raider","B",7],
+               'The Big Cheese':          ["Big Cheese","B",8],
+               'Bottom Feeder':           ["","B",1],
+               'Blood\u0003sucker':       ["Blood Sucker","B",2],
+               'Double Talker':           ["","B",3],
+               'Ambulance Chaser':        ["Amb Chaser","B",4],
+               'Back Stabber':            ["","B",5],
+               'Spin Doctor':             ["","B",6],
+               'Legal Eagle':             ["","B",7],
+               'Big Wig':                 ["","B",8],
+               'Short Change':            ["","B",1],
+               'Penny Pincher':           ["","B",2],
+               'Tightwad':                ["","B",3],
+               'Bean Counter':            ["","B",4],
+               'Number Cruncher':         ["Numb Cruncher","B",5],
+               'Money Bags':              ["","B",6],
+               'Loan Shark':              ["","B",7],
+               'Robber Baron':            ["","B",8],
+               'Cold Caller':             ["","B",1],
+               'Tele\u0003marketer':      ["Telecommuter","B",2],
+               'Name Dropper':            ["","B",3],
+               'Glad Hander':             ["","B",4],
+               'Mover & Shaker':          ["Mover&Shaker","B",5],
+               'Two-Face':                ["","B",6],
+               'The Mingler':             ["Mingler","B",7],
+               'Mr. Hollywood':           ["","B",8],
+            }
+         };
    const tc = ['Loopy Lane','Punchline Place','Silly Street','Goofy Speedway'],
          dk = ['Barnacle Boulevard','Lighthouse Lane','Seaweed Street','Sellbot HQ'],
          dg = ['Elm Street','Maple Street','Oak Street'],
@@ -58,6 +118,8 @@
          if (inv[districtv]) {
             const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled;  
             district.innerHTML=districtv+'<br><b><i>Invasion: '+inv[districtv].type.replace("o\x03","o").replace("\u0003","")+' ('+cogType(inv[districtv].type)+')</i></b>';
+console.log(invInfo(inv[districtv].type));          
+            
          }
       });
    }  
@@ -69,7 +131,18 @@
       else if (sb.includes(cog)) {return 'Sbot'} 
       else {return 'Unknown Cog Type'}
    } 
-
+   
+   function invType(cog) {
+      const coginfo=lookup.cog[cog];
+      if (coginfo) {
+         let [dispname,type,lev]=coginfo;
+         if (dispanme=="") {dispname=cog}
+         lev=`${lev}-${Number(lev)+4}`;
+         return `${dispname} (${type}-bot ${lev})`;
+      }
+      else {return `Cogtype ${cog} not found`}
+   }
+   
    function neighborhood(street) {
       if (tc.includes(street)) {return 'Ttown Cntrl'} 
       else if (dk.includes(street)) {return "D. Dock"} 
