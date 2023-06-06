@@ -113,26 +113,19 @@ async function THQPlus() {
       const groups=document.getElementsByClassName("info-card__content");
       Array.from(groups).forEach(g=>{
          const invtype = g.childNodes[0]; invtypev=invtype.innerText;
-         const street = g.childNodes[1]; streetv=street.innerText.split(" (")[0];
-         const district = g.childNodes[2]; districtv=district.innerText.split("\n")[0];
-         if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>('+neighborhood(streetv)+')</i>'}
-         if (inv[districtv]) {
-            const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled;  
+         if (invtype.includes('BUILDING') {
+            const street = g.childNodes[1]; streetv=street.innerText.split(" (")[0];
+            const district = g.childNodes[2]; districtv=district.innerText.split("\n")[0];
+            if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>('+neighborhood(streetv)+')</i>'}
+            if (inv[districtv]) {
+               const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled;  
             // district.innerHTML=districtv+'<br><b><i>Invasion: '+inv[districtv].type.replace("o\x03","o").replace("\u0003","")+' ('+cogType(inv[districtv].type)+')</i></b>';
-            district.innerHTML=districtv+'<br><b><i>Invasion '+invInfo(inv[districtv].type)+'</i></b>';
+               district.innerHTML=districtv+'<br><b><i>invInfo(inv[districtv].type)+'</i></b>';
             // console.log(invInfo(inv[districtv].type));          
-            
+            }  
          }
       });
    }  
-
-   function cogType(cog) {
-      if (bb.includes(cog)) {return 'Bbot'} 
-      else if (lb.includes(cog)) {return 'Lbot'} 
-      else if (cb.includes(cog)) {return 'Cbot'} 
-      else if (sb.includes(cog)) {return 'Sbot'} 
-      else {return 'Unknown Cog Type'}
-   } 
    
    function invInfo(cog) {
       const coginfo=lookup.cog[cog];
@@ -140,7 +133,7 @@ async function THQPlus() {
          let [dispname,type,lev]=coginfo;
          if (dispname=="") {dispname=cog}
          lev=`${lev}-${Number(lev)+4}`;
-         return `${dispname} ${lookup.cog.decode[type]} L${lev}`;
+         return `Invasion ${dispname} ${lookup.cog.decode[type]} L${lev}`;
       }
       else {return `Cogtype ${cog} not found`}
    }
