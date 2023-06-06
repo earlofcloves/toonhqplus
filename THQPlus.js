@@ -132,7 +132,7 @@ console.log(invInfo(inv[districtv].type));
       else {return 'Unknown Cog Type'}
    } 
    
-   function invType(cog) {
+   function invInfo(cog) {
       const coginfo=lookup.cog[cog];
       if (coginfo) {
          let [dispname,type,lev]=coginfo;
