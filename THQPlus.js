@@ -114,16 +114,12 @@ async function THQPlus() {
       Array.from(groups).forEach(g=>{
          const invtype = g.childNodes[0]; invtypev=invtype.innerText;
          console.log('xxx ',g,invtype);
-         if (invtypev.includes('BUILDING')) {
-            const street = g.childNodes[1]; streetv=street.innerText.split(" (")[0];
-            const district = g.childNodes[2]; districtv=district.innerText.split("\n")[0];
-            if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>('+neighborhood(streetv)+')</i>'}
-            if (inv[districtv]) {
-               const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled;  
-            // district.innerHTML=districtv+'<br><b><i>Invasion: '+inv[districtv].type.replace("o\x03","o").replace("\u0003","")+' ('+cogType(inv[districtv].type)+')</i></b>';
-               district.innerHTML=`${districtv}<br><b><i>${invInfo(inv[districtv].type)}</i></b>`;
-            // console.log(invInfo(inv[districtv].type));          
-            }  
+         const street = g.childNodes[1]; streetv=street.innerText.split(" (")[0];
+         const district = g.childNodes[2]; districtv=district.innerText.split("\n")[0];
+         if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>('+neighborhood(streetv)+')</i>'}
+         if (inv[districtv] && invtypev.includes('BUILDING')) {
+            //const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled; 
+            district.innerHTML=`${districtv}<br><b><i>${invInfo(inv[districtv].type)}</i></b>`-;      
          }
       });
    }  
@@ -143,17 +139,5 @@ async function THQPlus() {
       const n=lookup.street[street];
       if (n) {return `(${n})`} else {return ""}
    }
-   
-   function neighborhoodo(street) {
-      if (tc.includes(street)) {return 'Ttown Cntrl'} 
-      else if (dk.includes(street)) {return "D. Dock"} 
-      else if (dg.includes(street)) {return "D. Garden"} 
-      else if (mm.includes(street)) {return "M. Melodyland"} 
-      else if (br.includes(street)) {return "The Brrrgh"} 
-      else if (dd.includes(street)) {return "D. Dreamland"} 
-      else if (cd.includes(street)) {return "Chip 'n Dale's"} 
-      else {return 0}
-   } 
-}
 
 THQPlus();
