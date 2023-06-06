@@ -114,7 +114,7 @@ async function THQPlus() {
       Array.from(groups).forEach(g=>{
          const invtype = g.childNodes[0]; invtypev=invtype.innerText;
          console.log('xxx ',invtype);
-         if (invtype.includes('BUILDING') {
+         if (invtype.includes('BUILDING')) {
             const street = g.childNodes[1]; streetv=street.innerText.split(" (")[0];
             const district = g.childNodes[2]; districtv=district.innerText.split("\n")[0];
             if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>('+neighborhood(streetv)+')</i>'}
