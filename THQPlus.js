@@ -119,7 +119,7 @@ async function THQPlus() {
          if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>('+neighborhood(streetv)+')</i>'}
          if (inv[districtv] && invtypev.includes('BUILDING')) {
             //const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled; 
-            district.innerHTML=`${districtv}<br><b><i>${invInfo(inv[districtv].type)}</i></b>`-;      
+            district.innerHTML=`${districtv}<br><b><i>${invInfo(inv[districtv].type)}</i></b>`;      
          }
       });
    }  
@@ -140,4 +140,6 @@ async function THQPlus() {
       if (n) {return `(${n})`} else {return ""}
    }
 
+}
+   
 THQPlus();
