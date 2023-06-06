@@ -58,7 +58,7 @@ async function THQPlus() {
                'Two-Face':                ["","B",6],
                'The Mingler':             ["*Mingler","B",7],
                'Mr. Hollywood':           ["*Mr Hollywood","B",8],
-               'decode': {'B':'Boss','C':"Cash","L":"Law","S":"Sell}
+               'decode': {'B':'Boss','C':"Cash","L":"Law","S":"Sell"}
             },
          };
    const tc = ['Loopy Lane','Punchline Place','Silly Street','Goofy Speedway'],
