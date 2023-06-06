@@ -76,7 +76,7 @@ async function THQPlus() {
    
    killAds(); setInterval(killAds,15000);
    addGroupNotify();
-   updateTHQg(); setInterval(updateTHQg,5000);
+   updateTHQg(); setInterval(updateTHQg,2500);
 
    function killAds() {
       ads.forEach(ad=>{
@@ -140,6 +140,11 @@ async function THQPlus() {
    }
    
    function neighborhood(street) {
+      const n=lookup.street[street];
+      if (n) {return `(${n})`} else {return ""}
+   }
+   
+   function neighborhoodo(street) {
       if (tc.includes(street)) {return 'Ttown Cntrl'} 
       else if (dk.includes(street)) {return "D. Dock"} 
       else if (dg.includes(street)) {return "D. Garden"} 
