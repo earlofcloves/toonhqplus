@@ -28,7 +28,7 @@ async function THQPlus() {
             cog: {
                'Flunky':                  ["","B",1],
                'Pencil Pusher':           ["Pencil Pusher","B",2],
-               'Yesman':                  ["","B",3],
+               'Yesman':                  ["*Yesman","B",3],
                'Micro\x03manager':        ["MicroManager","B",4],
                'Downsizer':               ["","B",5],
                'Head Hunter':             ["","B",6],
@@ -36,29 +36,30 @@ async function THQPlus() {
                'The Big Cheese':          ["Big Cheese","B",8],
                'Bottom Feeder':           ["","B",1],
                'Blood\u0003sucker':       ["Blood Sucker","B",2],
-               'Double Talker':           ["","B",3],
+               'Double Talker':           ["*Dbl Talker","B",3],
                'Ambulance Chaser':        ["Amb Chaser","B",4],
-               'Back Stabber':            ["","B",5],
-               'Spin Doctor':             ["","B",6],
+               'Back Stabber':            ["*Back Stabber","B",5],
+               'Spin Doctor':             ["*Spin Doctor","B",6],
                'Legal Eagle':             ["","B",7],
-               'Big Wig':                 ["","B",8],
+               'Big Wig':                 ["*Big Wig","B",8],
                'Short Change':            ["","B",1],
                'Penny Pincher':           ["","B",2],
                'Tightwad':                ["","B",3],
                'Bean Counter':            ["","B",4],
-               'Number Cruncher':         ["Numb Cruncher","B",5],
+               'Number Cruncher':         ["Nmbr Cruncher","B",5],
                'Money Bags':              ["","B",6],
                'Loan Shark':              ["","B",7],
-               'Robber Baron':            ["","B",8],
+               'Robber Baron':            ["*Robber Baron","B",8],
                'Cold Caller':             ["","B",1],
                'Tele\u0003marketer':      ["Telecommuter","B",2],
-               'Name Dropper':            ["","B",3],
+               'Name Dropper':            ["*Name Dropper","B",3],
                'Glad Hander':             ["","B",4],
-               'Mover & Shaker':          ["Mover&Shaker","B",5],
+               'Mover & Shaker':          ["*Mover&Shaker","B",5],
                'Two-Face':                ["","B",6],
-               'The Mingler':             ["Mingler","B",7],
-               'Mr. Hollywood':           ["","B",8],
-            }
+               'The Mingler':             ["*Mingler","B",7],
+               'Mr. Hollywood':           ["*Mr Hollywood","B",8],
+               'decode': {'B':'Boss','C':"Cash","L":"Law","S":"Sell}
+            },
          };
    const tc = ['Loopy Lane','Punchline Place','Silly Street','Goofy Speedway'],
          dk = ['Barnacle Boulevard','Lighthouse Lane','Seaweed Street','Sellbot HQ'],
@@ -138,7 +139,7 @@ console.log(invInfo(inv[districtv].type));
          let [dispname,type,lev]=coginfo;
          if (dispname=="") {dispname=cog}
          lev=`${lev}-${Number(lev)+4}`;
-         return `${dispname} (${type}-bot ${lev})`;
+         return `${dispname} (${lookup.cog.decode[type] L{lev})`;
       }
       else {return `Cogtype ${cog} not found`}
    }
