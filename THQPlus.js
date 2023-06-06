@@ -136,7 +136,7 @@ console.log(invInfo(inv[districtv].type));
       const coginfo=lookup.cog[cog];
       if (coginfo) {
          let [dispname,type,lev]=coginfo;
-         if (dispanme=="") {dispname=cog}
+         if (dispname=="") {dispname=cog}
          lev=`${lev}-${Number(lev)+4}`;
          return `${dispname} (${type}-bot ${lev})`;
       }
