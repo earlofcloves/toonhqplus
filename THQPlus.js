@@ -121,7 +121,7 @@ async function THQPlus() {
             if (inv[districtv]) {
                const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled;  
             // district.innerHTML=districtv+'<br><b><i>Invasion: '+inv[districtv].type.replace("o\x03","o").replace("\u0003","")+' ('+cogType(inv[districtv].type)+')</i></b>';
-               district.innerHTML=districtv+'<br><b><i>invInfo(inv[districtv].type)+'</i></b>';
+               district.innerHTML=`${districtv}<br><b><i>${invInfo(inv[districtv].type)}</i></b>`;
             // console.log(invInfo(inv[districtv].type));          
             }  
          }
