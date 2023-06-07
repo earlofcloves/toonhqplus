@@ -118,12 +118,25 @@ console.log('killads');
    }
 
    async function updateTHQi() {
-console.log("update invasions");      
-
+   if (debug) {console.log("update invasions");      
+   const invs=document.getElementsByClassName("info-card__content");
+   console.log(invs);
+   return;            
+   Array.from(groups).forEach(g=>{
+         const invtype = g.childNodes[0]; invtypev=invtype.innerText;
+         // console.log('xxx ',g,invtype);
+         const street = g.childNodes[1]; streetv=street.innerText.split(" (")[0];
+         const district = g.childNodes[2]; districtv=district.innerText.split("\n")[0];
+         if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>'+neighborhood(streetv)+'</i>'}
+         if (inv[districtv] && invtypev.includes('BUILDING')) {
+            //const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled; 
+            district.innerHTML=`${districtv}<br><b><i>${invInfo(inv[districtv].type)}</i></b>`;      
+         }
+      });
    }
    
    async function updateInvasions() {
-console.log('updinv');       
+console.log('updinvforg');       
       let response;
       response = await fetch('https://api.allorigins.win/get?url='+encodeURIComponent('https://www.toontownrewritten.com/api/invasions'),{mode:"cors"});
       const jresp = await response.json();
