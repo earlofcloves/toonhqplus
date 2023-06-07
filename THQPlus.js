@@ -85,8 +85,8 @@ async function THQPlus() {
    async function THQloop() {
       if (window.location.host!=="toonhq.org") {return}
       killAds();
-      if (window.location.pathname.includes("groups") {updateTHQg()}
-      if (window.location.pathname.includes("invasions") {updateTHQi()}
+      if (window.location.pathname.includes("groups")) {updateTHQg()}
+      if (window.location.pathname.includes("invasions")) {updateTHQi()}
    }
    
    // killAds(); setInterval(killAds,15000);
@@ -117,6 +117,9 @@ console.log('killads');
       updateGroups();
    }
 
+   async function updateTHQi() {
+   }
+   
    async function updateInvasions() {
 console.log('updinv');       
       let response;
