@@ -120,8 +120,7 @@ console.log('killads');
    async function updateTHQi() {
       if (debug) {console.log("update invasions")}      
       const invs=document.getElementsByClassName("info-card__content");
-      console.log(invs);
-      return;             
+      console.log(invs);     
       Array.from(groups).forEach(g=>{
          const invtype = g.childNodes[0]; invtypev=invtype.innerText;
          // console.log('xxx ',g,invtype);
@@ -155,13 +154,14 @@ console.log("update groups");
          if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>'+neighborhood(streetv)+'</i>'}
          if (inv[districtv] && invtypev.includes('BUILDING')) {
             //const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled; 
-            district.innerHTML=`${districtv}<br><b><i>${invInfo(inv[districtv].type)}</i></b>`;      
+            district.innerHTML=`${districtv}<br><b><i>${invInfo(inv[districtv].type)}</i></b>`;    
          }
       });
    }  
    
    function invInfo(cog) {
       const coginfo=lookup.cog[cog];
+console.log(decodeCogname(cog));
       if (coginfo) {
          let [dispname,type,lev]=coginfo;
          if (dispname=="") {dispname=cog}
@@ -175,7 +175,11 @@ console.log("update groups");
       const n=lookup.street[street];
       if (n) {return `(${n})`} else {return 0}
    }
-
-}
+   
+   function decodeCogname(name) {
+      name.replace(/\x03/g,"");
+      name.replace(/\u0003/g,"");
+      return name.toUpperCase();
+   }
    
 THQPlus();
