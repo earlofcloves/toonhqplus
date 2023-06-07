@@ -94,7 +94,7 @@ async function THQPlus() {
    // updateTHQg(); setInterval(updateTHQg,2500);
 
    function killAds() {
-console.log('killads');      
+      if (debug) {console.log('killads')}      
       ads.forEach(ad=>{
          let e=document.getElementById(ad);
          // if (!e) {e=document.getElementsByClassName(ad)[0]}
@@ -120,7 +120,7 @@ console.log('killads');
    async function updateTHQi() {
       if (debug) {console.log("update invasions")}      
       const invs=document.getElementsByClassName("info-card__content");
-      console.log(invs);     
+      if (debug) {console.log(invs)}    
       Array.from(groups).forEach(g=>{
          const invtype = g.childNodes[0]; invtypev=invtype.innerText;
          // console.log('xxx ',g,invtype);
@@ -135,7 +135,7 @@ console.log('killads');
    }
    
    async function updateInvasions() {
-console.log('updinvforg');       
+      if (debug) {console.log('updinvforg')}      
       let response;
       response = await fetch('https://api.allorigins.win/get?url='+encodeURIComponent('https://www.toontownrewritten.com/api/invasions'),{mode:"cors"});
       const jresp = await response.json();
@@ -145,7 +145,7 @@ console.log('updinvforg');
 
    function updateGroups() {
       const groups=document.getElementsByClassName("info-card__content");
-console.log("update groups");
+      if (debug) {console.log("update groups")}
       Array.from(groups).forEach(g=>{
          const invtype = g.childNodes[0]; invtypev=invtype.innerText;
          // console.log('xxx ',g,invtype);
@@ -161,7 +161,7 @@ console.log("update groups");
    
    function invInfo(cog) {
       const coginfo=lookup.cog[cog];
-// console.log(decodeCogname(cog));
+      if (debug) {console.log(decodeCogname(cog))}
       if (coginfo) {
          let [dispname,type,lev]=coginfo;
          if (dispname=="") {dispname=cog}
@@ -176,10 +176,12 @@ console.log("update groups");
       if (n) {return `(${n})`} else {return 0}
    }
    
-//   function decodeCogname(name) {
-//      name.replace(/\x03/g,"");
-//      name.replace(/\u0003/g,"");
-//      return name.toUpperCase();
-//   }
+   function decodeCogname(name) {
+      name.replace(/\x03/g,"");
+      name.replace(/\u0003/g,"");
+      return name.toUpperCase();
+   }
+
+}
    
 THQPlus();
