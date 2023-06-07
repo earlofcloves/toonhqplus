@@ -1,5 +1,5 @@
 async function THQPlus() {
-   var inv;
+   var inv, debug=1;
    const lookup = {
             street: {
                'Loopy Lane': 'Ttown Cntrl',
