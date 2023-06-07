@@ -74,14 +74,30 @@ async function THQPlus() {
          sb = ['Cold Caller','Tele\u0003marketer','Name Dropper','Glad Hander','Mover & Shaker','Two-Face','The Mingler','Mr. Hollywood','Vice President'];
    const ads = ["tyche_trendi_video_container","pw-oop-bottom_rail","mt-3"];
    
-   killAds(); setInterval(killAds,15000);
-   addGroupNotify();
-   updateTHQg(); setInterval(updateTHQg,2500);
+   THQsetup();
+   
+   async function THQsetup() {
+      if (window.location.host!=="toonhq.org") {return}
+      addGroupNotify();
+      await THQloop(); setInterval(THQloop,2500);
+   }
+   
+   async function THQloop() {
+      if (window.location.host!=="toonhq.org") {return}
+      killAds();
+      if (window.location.pathname.includes("groups") {updateTHQg()}
+      if (window.location.pathname.includes("invasions") {updateTHQi()}
+   }
+   
+   // killAds(); setInterval(killAds,15000);
+   // addGroupNotify();
+   // updateTHQg(); setInterval(updateTHQg,2500);
 
    function killAds() {
+console.log('killads');      
       ads.forEach(ad=>{
          let e=document.getElementById(ad);
- //        if (!e) {e=document.getElementsByClassName(ad)[0]}
+         // if (!e) {e=document.getElementsByClassName(ad)[0]}
          if (e) {e.remove()}
       });
    }
@@ -102,6 +118,7 @@ async function THQPlus() {
    }
 
    async function updateInvasions() {
+console.log('updinv');       
       let response;
       response = await fetch('https://api.allorigins.win/get?url='+encodeURIComponent('https://www.toontownrewritten.com/api/invasions'),{mode:"cors"});
       const jresp = await response.json();
@@ -111,7 +128,7 @@ async function THQPlus() {
 
    function updateGroups() {
       const groups=document.getElementsByClassName("info-card__content");
-console.log("update groups",window.location);
+console.log("update groups");
       Array.from(groups).forEach(g=>{
          const invtype = g.childNodes[0]; invtypev=invtype.innerText;
          // console.log('xxx ',g,invtype);
