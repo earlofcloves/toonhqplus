@@ -123,7 +123,7 @@ async function THQPlus() {
       if (debug) {console.log(invs)}    
       Array.from(invs).forEach(i=>{
          const invtype = i.childNodes[0]; 
-         const itext=invtype.innerText, cog=itext.indexOf("\n"), suff=itext.substring(brk);
+         const itext=invtype.innerText,brk=itext.indexOf("\n"),cog=itext.substring(0,brk),suff=itext.substring(brk);
          if (debug) {console.log(cog,suff,itext)}
          return;
          const street = g.childNodes[1]; streetv=street.innerText.split(" (")[0];
