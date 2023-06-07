@@ -161,7 +161,7 @@ console.log("update groups");
    
    function invInfo(cog) {
       const coginfo=lookup.cog[cog];
-console.log(decodeCogname(cog));
+// console.log(decodeCogname(cog));
       if (coginfo) {
          let [dispname,type,lev]=coginfo;
          if (dispname=="") {dispname=cog}
@@ -176,10 +176,10 @@ console.log(decodeCogname(cog));
       if (n) {return `(${n})`} else {return 0}
    }
    
-   function decodeCogname(name) {
-      name.replace(/\x03/g,"");
-      name.replace(/\u0003/g,"");
-      return name.toUpperCase();
-   }
+//   function decodeCogname(name) {
+//      name.replace(/\x03/g,"");
+//      name.replace(/\u0003/g,"");
+//      return name.toUpperCase();
+//   }
    
 THQPlus();
