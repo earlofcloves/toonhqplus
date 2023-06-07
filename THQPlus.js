@@ -121,9 +121,11 @@ async function THQPlus() {
       if (debug) {console.log("update invasions")}      
       const invs=document.getElementsByClassName("info-card__content");
       if (debug) {console.log(invs)}    
-      Array.from(groups).forEach(g=>{
-         const invtype = g.childNodes[0]; invtypev=invtype.innerText;
-         // console.log('xxx ',g,invtype);
+      Array.from(invs).forEach(i=>{
+         const invtype = i.childNodes[0]; 
+         const itext=invtype.innerText, cog=itext.indexOf("\n"), suff=itext.substring(brk);
+         if (debug) {console.log(cog,suff,itext)}
+         return;
          const street = g.childNodes[1]; streetv=street.innerText.split(" (")[0];
          const district = g.childNodes[2]; districtv=district.innerText.split("\n")[0];
          if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>'+neighborhood(streetv)+'</i>'}
