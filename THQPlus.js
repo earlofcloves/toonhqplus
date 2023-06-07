@@ -78,7 +78,7 @@ async function THQPlus() {
    
    async function THQsetup() {
       if (window.location.host!=="toonhq.org") {return}
-      addGroupNotify();
+      if (window.location.pathname.includes("groups")) {addGroupNotify()}
       await THQloop(); setInterval(THQloop,2500);
    }
    
@@ -118,6 +118,8 @@ console.log('killads');
    }
 
    async function updateTHQi() {
+console.log("update invasions");      
+
    }
    
    async function updateInvasions() {
