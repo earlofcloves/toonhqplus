@@ -120,7 +120,7 @@ async function THQPlus() {
    async function updateTHQi() {
       if (debug) {console.log("update invasions")}      
       const invs=document.getElementsByClassName("info-card__content");
-      if (debug) {console.log(Array.from(invs));return;console.log(invs.item(0))}    
+      if (debug) {console.log(Array.from(invs)[0]);return;console.log(invs.item(0))}    
       Array.from(invs).forEach(i=>{
          const invtype = i.childNodes[0]; 
          const itext=invtype.innerText,brk=itext.indexOf("\n"),cog=itext.substring(0,brk),suff=itext.substring(brk);
