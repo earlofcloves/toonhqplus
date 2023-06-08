@@ -117,7 +117,7 @@ async function THQPlus() {
       if (debug) {console.log("update invasions")}      
       const invs=document.getElementsByClassName("info-card__content");
       Array.from(invs).forEach(i=>{
-         const cog = i.childNodes[0], 
+         let cog = i.childNodes[0];
          cog.innerText=invInfo(cog.innerText);
       });
    }
