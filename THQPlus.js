@@ -88,10 +88,6 @@ async function THQPlus() {
       if (window.location.pathname.includes("groups")) {updateTHQg()}
       if (window.location.pathname.includes("invasions")) {updateTHQi()}
    }
-   
-   // killAds(); setInterval(killAds,15000);
-   // addGroupNotify();
-   // updateTHQg(); setInterval(updateTHQg,2500);
 
    function killAds() {
       if (debug) {console.log('killads')}      
@@ -120,18 +116,9 @@ async function THQPlus() {
    async function updateTHQi() {
       if (debug) {console.log("update invasions")}      
       const invs=document.getElementsByClassName("info-card__content");
-      console.log("invs",invs);
       Array.from(invs).forEach(i=>{
-         const cog = i.childNodes[0], cogv=cog.innerText;
-         console.log(cogv, invInfo(cogv));
-         return;
-         const street = g.childNodes[1]; streetv=street.innerText.split(" (")[0];
-         const district = g.childNodes[2]; districtv=district.innerText.split("\n")[0];
-         if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>'+neighborhood(streetv)+'</i>'}
-         if (inv[districtv] && invtypev.includes('BUILDING')) {
-            //const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled; 
-            district.innerHTML=`${districtv}<br><b><i>${invInfo(inv[districtv].type)}</i></b>`;      
-         }
+         const cog = i.childNodes[0], 
+         cog.innerText=invInfo(cog.innerText);
       });
    }
    
