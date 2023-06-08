@@ -119,7 +119,7 @@ async function THQPlus() {
       Array.from(invs).forEach(i=>{
          let cog = i.childNodes[0];
          cog.innerText=invInfo(cog.innerText);
-         cog.style.fontsize="14px";
+         cog.style.fontsize="12px";
       });
    }
    
