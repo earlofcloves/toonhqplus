@@ -120,10 +120,12 @@ async function THQPlus() {
    async function updateTHQi() {
       if (debug) {console.log("update invasions")}      
       const invs=document.getElementsByClassName("info-card__content");
-      const i2=document.querySelectorAll(".info-card__content");
-      console.log(i2[0]); return;
-      if (debug) {console.log(Array.from(invs)[0]);return;console.log(invs.item(0))}    
+      //const i2=document.querySelectorAll(".info-card__content");
+      //console.log(i2[0]); return;
+      //if (debug) {console.log(Array.from(invs)[0]);return;console.log(invs.item(0))}    
+      console.log("invs",invs);
       Array.from(invs).forEach(i=>{
+          console.log("i",i);
          const invtype = i.childNodes[0]; 
          const itext=invtype.innerText,brk=itext.indexOf("\n"),cog=itext.substring(0,brk),suff=itext.substring(brk);
          if (debug) {console.log(i);console.log(invtype);console.log(cog,suff,itext)}
@@ -150,7 +152,9 @@ async function THQPlus() {
    function updateGroups() {
       const groups=document.getElementsByClassName("info-card__content");
       if (debug) {console.log("update groups")}
+            console.log("groups",groups);
       Array.from(groups).forEach(g=>{
+         console.log("g",g);
          const invtype = g.childNodes[0]; invtypev=invtype.innerText;
          const street = g.childNodes[1]; streetv=street.innerText.split(" (")[0];
          const district = g.childNodes[2]; districtv=district.innerText.split("\n")[0];
