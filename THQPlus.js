@@ -33,7 +33,7 @@ async function THQPlus() {
                'DOWNSIZER':               ["Downsizer","B",5],
                'HEAD HUNTER':             ["Head Hunter","B",6],
                'CORPORATE RAIDER':        ["Corp Raider","B",7],
-               'TEH BIG CHEESE':          ["Big Cheese","B",8],
+               'THE BIG CHEESE':          ["Big Cheese","B",8],
                'BOTTOM FEEDER':           ["Bottom Feeder","B",1],
                'BLOODUSCKER':             ["Blood Sucker","B",2],
                'DOUBLE TALKER':           ["Dbl Talker","B",3,1],
