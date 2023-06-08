@@ -46,7 +46,7 @@ async function THQPlus() {
                'PENNY PINCHER':           ["Penny Pincher","B",2],
                'TIGHTWAD':                ["Tightwad","B",3],
                'BEAN COUNTER':            ["Bean Counter","B",4],
-               'NUMBER CRUNCHER':         ["Number Cruncher","B",5],
+               'NUMBER CRUNCHER':         ["Numb Cruncher","B",5],
                'MONEY BAGS':              ["Money Bags","B",6],
                'LOAN SHARK':              ["Loan Shark","B",7],
                'ROBBER BARON':            ["Robber Baron","B",8,1],
