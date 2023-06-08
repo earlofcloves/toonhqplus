@@ -28,20 +28,20 @@ async function THQPlus() {
             cog: {
                'FLUNKY':                  ["Flunky","B",1],
                'PENCIL PUSHER':           ["Pencil Pusher","B",2],
-               'YESMAN':                  ["*Yesman","B",3],
-               'MICROMANAGER':        ["MicroManager","B",4],
+               'YESMAN':                  ["Yesman","B",3,1],
+               'MICROMANAGER':            ["MicroManager","B",4],
                'DOWNSIZER':               ["Downsizer","B",5],
                'HEAD HUNTER':             ["Head Hunter","B",6],
                'CORPORATE RAIDER':        ["Corp Raider","B",7],
                'TEH BIG CHEESE':          ["Big Cheese","B",8],
                'BOTTOM FEEDER':           ["Bottom Feeder","B",1],
-               'BLOODUSCKER':       ["Blood Sucker","B",2],
-               'DOUBLE TALKER':           ["*Dbl Talker","B",3],
+               'BLOODUSCKER':             ["Blood Sucker","B",2],
+               'DOUBLE TALKER':           ["Dbl Talker","B",3,1],
                'AMBULANCE CHASER':        ["Amb Chaser","B",4],
-               'BACK STABBER':            ["*Back Stabber","B",5],
-               'SPIN DOCTOR':             ["*Spin Doctor","B",6],
+               'BACK STABBER':            ["Back Stabber","B",5,1],
+               'SPIN DOCTOR':             ["Spin Doctor","B",6,1],
                'LEGAL EAGLE':             ["Legal Eagle","B",7],
-               'BIG WIG':                 ["*Big Wig","B",8],
+               'BIG WIG':                 ["Big Wig","B",8,1],
                'SHORT CHANGE':            ["Short Change","B",1],
                'PENNY PINCHER':           ["Penny Pincher","B",2],
                'TIGHTWAD':                ["Tightwad","B",3],
@@ -49,15 +49,15 @@ async function THQPlus() {
                'NUMBER CRUNCHER':         ["Number Cruncher","B",5],
                'MONEY BAGS':              ["Money Bags","B",6],
                'LOAN SHARK':              ["Loan Shark","B",7],
-               'ROBBER BARON':            ["*Robber Baron","B",8],
+               'ROBBER BARON':            ["Robber Baron","B",8,1],
                'COLD CALLER':             ["Cold Caller","B",1],
-               'TELEMARKETER':      ["Telecommuter","B",2],
-               'NAME DROPPER':            ["*Name Dropper","B",3],
+               'TELEMARKETER':            ["Telecommuter","B",2],
+               'NAME DROPPER':            ["Name Dropper","B",3,1],
                'GLAD HANDER':             ["Glad Hander","B",4],
-               'MOVER & SHAKER':          ["*Mover&Shaker","B",5],
+               'MOVER & SHAKER':          ["Mover&Shaker","B",5,1],
                'TWO-FACE':                ["Two-Face","B",6],
-               'THE MINGLER':             ["*Mingler","B",7],
-               'MR. HOLLYWOOD':           ["*Mr Hollywood","B",8],
+               'THE MINGLER':             ["Mingler","B",7,1],
+               'MR. HOLLYWOOD':           ["Mr Hollywood","B",8,1],
                'decode': {'B':'Boss','C':"Cash","L":"Law","S":"Sell"}
             },
          };
@@ -163,10 +163,11 @@ async function THQPlus() {
       const coginfo=lookup.cog[decodeCogname(cog)];
       if (debug) {console.log(decodeCogname(cog))}
       if (coginfo) {
-         let [dispname,type,lev]=coginfo;
+         let [dispname,type,lev,gattack]=coginfo;
          if (dispname=="") {dispname=cog}
          lev=`${lev}-${Number(lev)+4}`;
-         return `${dispname} ${lookup.cog.decode[type]} L${lev}`;
+         if (gattack) {gattack="*") else {gattack=""}
+         return `${dispname} ${lookup.cog.decode[type]} L${lev}${gattack}`;
       }
       else {return cog}
    }
