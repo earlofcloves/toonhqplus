@@ -149,6 +149,7 @@ async function THQPlus() {
             //const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled; 
             district.innerHTML=`${districtv}<br><b><i>Invasion ${invInfo(inv[districtv].type)}</i></b>`;    
             console.log("groupcoginfo",getCogInfo(inv[districtv].type));
+            g.parentElement.style.height="150px";
          }
       });
    }  
