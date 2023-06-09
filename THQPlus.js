@@ -170,8 +170,8 @@ async function THQPlus() {
       if (!lookup.cog[cogname]) {return [cog,"?",""]}
       let [cogshortname,cogtype,coglevel,groupattack]=lookup.cog[cogname];
       coglevel=`${coglevel}-${Number(coglevel)+4}`;
-      if (groupattack) {groupattack="*"} else {groupattack=""}
-      return [cogtype+"bot",coglevel,groupattack];
+      if (groupattack) {groupattack=" (GA)"} else {groupattack=""}
+      return [lookup.cog.decode[cogtype]+"bot",coglevel,groupattack];
    }   
    
    function neighborhood(street) {
