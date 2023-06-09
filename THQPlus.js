@@ -122,7 +122,8 @@ async function THQPlus() {
          cog.style.fontsize="12px";
          let dist = i.childNodes[1];
          dist.innerText="xxx"+dist.innerText;
-         i.parentElement.style.height="221px";
+         i.parentElement.style.height="130px";
+         console.log("groupcoginfo",getCogInfo(cog));
       });
    }
    
@@ -146,6 +147,7 @@ async function THQPlus() {
          if (inv[districtv] && invtypev.includes('BUILDING')) {
             //const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled; 
             district.innerHTML=`${districtv}<br><b><i>Invasion ${invInfo(inv[districtv].type)}</i></b>`;    
+            console.log("groupcoginfo",getCogInfo(inv[districtv].type));
          }
       });
    }  
@@ -162,6 +164,15 @@ async function THQPlus() {
       }
       else {return cog}
    }
+   
+   function getCogInfo(cog) {
+      const cogname=cog.replace(/\x03/g,"").replace(/\u0003/g,"").toUpperCase();
+      if (!lookup.cog[cogname]) {return(cog,"?"."")}
+      let [cogshortname,cogtype,coglevel,groupattack]=lookup.cog[cogname];
+      coglevel=`${coglevel}-${Number(coglevel)+4}`;
+      if (groupattack) {groupattack="*"} else {groupattack=""}
+      return (cogtype+"bot",coglevel,groupattack);
+   }   
    
    function neighborhood(street) {
       const n=lookup.street[street];
