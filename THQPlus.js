@@ -166,7 +166,7 @@ async function THQPlus() {
    }
    
    function getCogInfo(cog) {
-      const cogname=cog.replace(/\x03/g,"");
+      let cogname=cog.replace(/\x03/g,"");
       cogname=cogname.replace(/\u0003/g,"");
       cogname=cogname.toUpperCase();
       if (!lookup.cog[cogname]) {return [cog,"?",""]}
