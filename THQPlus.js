@@ -149,7 +149,7 @@ async function THQPlus() {
             //const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled; 
             //district.innerHTML=`${districtv}<br><b><i>Invasion ${invInfo(inv[districtv].type)}</i></b>`;    
             //console.log("groupcoginfo",getCogInfo(inv[districtv].type));
-            let [cogname,cogtype,coglvl,avgattack] = getCogInfo(i.childNodes[0].innerText); 
+            let [cogname,cogtype,coglvl,avgattack] = getCogInfo(invInfo(inv[districtv].type); 
             district.innerHTML=`${districtv}<br><b><i>${cogname} Invasion Level</i><br>${coglvl}, AvgAttack ${avgattack}</i></b>`;   
             g.parentElement.style.height="140px";
          }
