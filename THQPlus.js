@@ -50,8 +50,8 @@ async function THQPlus() {
                'MONEY BAGS':              ["Money Bags","B",6,11],
                'LOAN SHARK':              ["Loan Shark","B",7,13],
                'ROBBER BARON':            ["Robber Baron","B",8,"15G"],
-               'COLD CALLER':             ["Cold Caller","B",3],
-               'TELEMARKETER':            ["Telecommuter","B",5],
+               'COLD CALLER':             ["Cold Caller","B",1,3],
+               'TELEMARKETER':            ["Telecommuter","B",2,5],
                'NAME DROPPER':            ["Name Dropper","B",3,"6G"],
                'GLAD HANDER':             ["Glad Hander","B",4,6],
                'MOVER & SHAKER':          ["Mover&Shaker","B",5,"10G"],
@@ -122,8 +122,8 @@ async function THQPlus() {
          //cog.style.fontsize="12px";
          const distnode=i.getElementsByTagName("P")[0], dist=distnode.innerText.split("\n");
          let distname=dist[2]; if (!distname) {distname=dist[0]}
-         let [cogname,cogtype,coglvl,maxattack] = getCogInfo(i.childNodes[0].innerText); 
-         distnode.innerHTML=`<b>${cogtype}<br>Level ${coglvl}, MaxAttack ${maxattack}</b><br>${distname}`;
+         let [cogname,cogtype,coglvl,avgattack] = getCogInfo(i.childNodes[0].innerText); 
+         distnode.innerHTML=`<b>${cogtype}<br>Level ${coglvl}, AvgAttack ${avgattack}</b><br>${distname}`;
          i.parentElement.style.height="150px";
       });
    }
@@ -170,9 +170,9 @@ async function THQPlus() {
       const cogname=cog.replace(/\x03/g,"").replace(/\u0003/g,"");
       const cognameuc=cogname.toUpperCase();
       if (!lookup.cog[cognameuc]) {return [cog,"?",""]}
-      let [cogshortname,cogtype,coglevel,maxattack]=lookup.cog[cognameuc];
+      let [cogshortname,cogtype,coglevel,avgattack]=lookup.cog[cognameuc];
       coglevel=`${coglevel}-${Number(coglevel)+4}`;
-      return [cogname,lookup.cog.decode[cogtype]+"bot",coglevel,maxattack];
+      return [cogname,lookup.cog.decode[cogtype]+"bot",coglevel,avgattack];
    }   
    
    function neighborhood(street) {
