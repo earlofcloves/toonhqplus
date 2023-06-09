@@ -123,7 +123,7 @@ async function THQPlus() {
          let dist = i.childNodes[1];
          dist.innerText="xxx"+dist.innerText;
          i.parentElement.style.height="130px";
-         console.log("groupcoginfo",getCogInfo(cog));
+         console.log("invcoginfo",getCogInfo(cog.innerText));
       });
    }
    
@@ -166,9 +166,7 @@ async function THQPlus() {
    }
    
    function getCogInfo(cog) {
-      let cogname=cog.replace(/\x03/g,"");
-      cogname=cogname.replace(/\u0003/g,"");
-      cogname=cogname.toUpperCase();
+      const cogname=cog.replace(/\x03/g,"").replace(/\u0003/g,"").toUpperCase();
       if (!lookup.cog[cogname]) {return [cog,"?",""]}
       let [cogshortname,cogtype,coglevel,groupattack]=lookup.cog[cogname];
       coglevel=`${coglevel}-${Number(coglevel)+4}`;
