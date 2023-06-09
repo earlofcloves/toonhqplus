@@ -121,9 +121,9 @@ async function THQPlus() {
          //cog.innerText=invInfo(cog.innerText);
          //cog.style.fontsize="12px";
          let distnode = i.childNodes[1],dist=distnode.innerText.split("\n")[1];
-console.log(distnode);         
-         let [cogname,cogtype,coglvl,cogGA] = getCogInfo(i.childNodes[0].innerText); 
-         distnode.innerHTML=`<b>${cogtype} ${coglvl}${cogGA}<br>${dist}`;
+console.log(distnode.innerText);         
+         let [cogname,cogtype,coglvl,maxattack] = getCogInfo(i.childNodes[0].innerText); 
+         distnode.innerHTML=`<b>${cogtype} Level=${coglvl} MaxAttacke=${maxattack}</b><br>${dist}`;
          i.parentElement.style.height="130px";
       });
    }
@@ -170,10 +170,9 @@ console.log(distnode);
       const cogname=cog.replace(/\x03/g,"").replace(/\u0003/g,"");
       const cognameuc=cogname.toUpperCase();
       if (!lookup.cog[cognameuc]) {return [cog,"?",""]}
-      let [cogshortname,cogtype,coglevel,groupattack]=lookup.cog[cognameuc];
+      let [cogshortname,cogtype,coglevel,maxattack]=lookup.cog[cognameuc];
       coglevel=`${coglevel}-${Number(coglevel)+4}`;
-      if (groupattack) {groupattack=" (GA)"} else {groupattack=""}
-      return [cogname,lookup.cog.decode[cogtype]+"bot",'level '+coglevel,groupattack];
+      return [cogname,lookup.cog.decode[cogtype]+"bot",coglevel,maxattack];
    }   
    
    function neighborhood(street) {
