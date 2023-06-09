@@ -121,7 +121,7 @@ async function THQPlus() {
          //cog.innerText=invInfo(cog.innerText);
          //cog.style.fontsize="12px";
          let distnode = i.childNodes[1],dist=distnode.innerText.split("\n")[1];
-         let [cogname,cogtype,coglvl,cogGA] = getCogInfo(i.childNodes[0].innetText); 
+         let [cogname,cogtype,coglvl,cogGA] = getCogInfo(i.childNodes[0].innerText); 
          distnode.innerHTML=`<b>${cogtype}, ${coglvl}${cogGA}<br>${dist}`;
          i.parentElement.style.height="130px";
       });
