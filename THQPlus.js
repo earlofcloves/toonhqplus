@@ -167,7 +167,7 @@ async function THQPlus() {
    
    function getCogInfo(cog) {
       let cogin=cog;
-      const cogname=cog.replace(/\x03/g,"").replace(/\u0003/g,"").toUpperCase();
+      const cogname=cogin.replace(/\x03/g,"").replace(/\u0003/g,"").toUpperCase();
       if (!lookup.cog[cogname]) {return [cog,"?",""]}
       let [cogshortname,cogtype,coglevel,groupattack]=lookup.cog[cogname];
       coglevel=`${coglevel}-${Number(coglevel)+4}`;
