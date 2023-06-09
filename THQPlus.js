@@ -120,7 +120,7 @@ async function THQPlus() {
          let cog = i.childNodes[0];
          cog.innerText=invInfo(cog.innerText);
          cog.style.fontsize="12px";
-         i.parentElement.style.height="130px";
+         i.parentElement.style.height="221px";
       });
    }
    
