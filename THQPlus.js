@@ -121,10 +121,10 @@ async function THQPlus() {
          //cog.innerText=invInfo(cog.innerText);
          //cog.style.fontsize="12px";
          let distnode = i.childNodes[1],dist=distnode.innerText.split("\n")[1];
-console.log(i,distnode,distnode.innerText);         
+console.log(i,distnode,i.innerText);         
          let [cogname,cogtype,coglvl,maxattack] = getCogInfo(i.childNodes[0].innerText); 
          distnode.innerHTML=`<b>${cogtype}<br>Level ${coglvl}, MaxAttack ${maxattack}</b><br>${dist}`;
-         i.parentElement.style.height="130px";
+         i.parentElement.style.height="150px";
       });
    }
    
