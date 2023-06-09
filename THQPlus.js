@@ -120,11 +120,10 @@ async function THQPlus() {
          //let cog = i.childNodes[0];
          //cog.innerText=invInfo(cog.innerText);
          //cog.style.fontsize="12px";
-         console.log("ppp ",i.getElementsByTagName("P")[0].innerText);
-         let distnode = i.childNodes[1],dist=distnode.innerText.split("\n")[1];
-console.log(i); console.log(distnode); console.log(i.innerText.split("\n")[2]);         
+         const distnode=i.getElementsByTagName("P")[0], dist=distnode.innerText.split("\n");
+         let distname=dist[2]; if (!distname) {distname=dist[0]}
          let [cogname,cogtype,coglvl,maxattack] = getCogInfo(i.childNodes[0].innerText); 
-         distnode.innerHTML=`<b>${cogtype}<br>Level ${coglvl}, MaxAttack ${maxattack}</b><br>${dist}`;
+         distnode.innerHTML=`<b>${cogtype}<br>Level ${coglvl}, MaxAttack ${maxattack}</b><br>${distname}`;
          i.parentElement.style.height="150px";
       });
    }
