@@ -120,6 +120,7 @@ async function THQPlus() {
          //let cog = i.childNodes[0];
          //cog.innerText=invInfo(cog.innerText);
          //cog.style.fontsize="12px";
+         console.log("ppp ",i.getElementsByTagName("P")[0].innerText);
          let distnode = i.childNodes[1],dist=distnode.innerText.split("\n")[1];
 console.log(i); console.log(distnode); console.log(i.innerText.split("\n")[2]);         
          let [cogname,cogtype,coglvl,maxattack] = getCogInfo(i.childNodes[0].innerText); 
