@@ -148,7 +148,7 @@ async function THQPlus() {
          if (inv[districtv] && invtypev.includes('BUILDING')) {
             //const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled; 
             //district.innerHTML=`${districtv}<br><b><i>Invasion ${-Info(inv[districtv].type)}</i></b>`;    
-            console.log("groupcoginfo");console.log(district);console.log(districtv);console.log(inv[districtv]);console.log(g);
+            console.log("groupcoginfo");console.log(district);console.log(districtv);console.log(inv[districtv]);console.log(inv[districtv].type);
             let [cogname,cogtype,coglvl,avgattack] = getCogInfo(getCogInfo(inv[districtv].type)); 
             district.innerHTML=`${districtv}<br><b><i>${cogname} Invasion Level</i><br>${coglvl}, AvgAttack ${avgattack}</i></b>`;   
             g.parentElement.style.height="140px";
