@@ -26,38 +26,38 @@ async function THQPlus() {
                'Bossbot HQ': "Chip 'n Dale's"
             },
             cog: {
-               'FLUNKY':                  ["Flunky","B",1],
-               'PENCIL PUSHER':           ["Pencil Pusher","B",2],
-               'YESMAN':                  ["Yesman","B",3,1],
-               'MICROMANAGER':            ["MicroManager","B",4],
-               'DOWNSIZER':               ["Downsizer","B",5],
-               'HEAD HUNTER':             ["Head Hunter","B",6],
-               'CORPORATE RAIDER':        ["Corp Raider","B",7],
-               'THE BIG CHEESE':          ["Big Cheese","B",8],
-               'BOTTOM FEEDER':           ["Bottom Feeder","B",1],
-               'BLOODUSCKER':             ["Blood Sucker","B",2],
-               'DOUBLE TALKER':           ["Dbl Talker","B",3,1],
-               'AMBULANCE CHASER':        ["Amb Chaser","B",4],
-               'BACK STABBER':            ["Back Stabber","B",5,1],
-               'SPIN DOCTOR':             ["Spin Doctor","B",6,1],
-               'LEGAL EAGLE':             ["Legal Eagle","B",7],
-               'BIG WIG':                 ["Big Wig","B",8,1],
-               'SHORT CHANGE':            ["Short Change","B",1],
-               'PENNY PINCHER':           ["Penny Pincher","B",2],
-               'TIGHTWAD':                ["Tightwad","B",3],
-               'BEAN COUNTER':            ["Bean Counter","B",4],
-               'NUMBER CRUNCHER':         ["Numb Cruncher","B",5],
-               'MONEY BAGS':              ["Money Bags","B",6],
-               'LOAN SHARK':              ["Loan Shark","B",7],
-               'ROBBER BARON':            ["Robber Baron","B",8,1],
-               'COLD CALLER':             ["Cold Caller","B",1],
-               'TELEMARKETER':            ["Telecommuter","B",2],
-               'NAME DROPPER':            ["Name Dropper","B",3,1],
-               'GLAD HANDER':             ["Glad Hander","B",4],
-               'MOVER & SHAKER':          ["Mover&Shaker","B",5,1],
-               'TWO-FACE':                ["Two-Face","B",6],
-               'THE MINGLER':             ["Mingler","B",7,1],
-               'MR. HOLLYWOOD':           ["Mr Hollywood","B",8,1],
+               'FLUNKY':                  ["Flunky","B",1,7],
+               'PENCIL PUSHER':           ["Pencil Pusher","B",2,12],
+               'YESMAN':                  ["Yesman","B",3,"8G"],
+               'MICROMANAGER':            ["MicroManager","B",4,18],
+               'DOWNSIZER':               ["Downsizer","B",5,15],
+               'HEAD HUNTER':             ["Head Hunter","B",6,21],
+               'CORPORATE RAIDER':        ["Corp Raider","B",7,24],
+               'THE BIG CHEESE':          ["Big Cheese","B",8,22],
+               'BOTTOM FEEDER':           ["Bottom Feeder","B",1,10],
+               'BLOODUSCKER':             ["Blood Sucker","B",2,14],
+               'DOUBLE TALKER':           ["Dbl Talker","B",3,1,18],
+               'AMBULANCE CHASER':        ["Amb Chaser","B",4,,19],
+               'BACK STABBER':            ["Back Stabber","B",5,"18G"],
+               'SPIN DOCTOR':             ["Spin Doctor","B",6,1,17],
+               'LEGAL EAGLE':             ["Legal Eagle","B",7,22],
+               'BIG WIG':                 ["Big Wig","B",8,"21G"],
+               'SHORT CHANGE':            ["Short Change","B",1,11],
+               'PENNY PINCHER':           ["Penny Pincher","B",2,12],
+               'TIGHTWAD':                ["Tightwad","B",3,18],
+               'BEAN COUNTER':            ["Bean Counter","B",4,15],
+               'NUMBER CRUNCHER':         ["Numb Cruncher","B",5,15],
+               'MONEY BAGS':              ["Money Bags","B",6,18],
+               'LOAN SHARK':              ["Loan Shark","B",7,24],
+               'ROBBER BARON':            ["Robber Baron","B",8,"21G"],
+               'COLD CALLER':             ["Cold Caller","B",10],
+               'TELEMARKETER':            ["Telecommuter","B",12],
+               'NAME DROPPER':            ["Name Dropper","B",3,"14G"],
+               'GLAD HANDER':             ["Glad Hander","B",4,20],
+               'MOVER & SHAKER':          ["Mover&Shaker","B",5,"21G"],
+               'TWO-FACE':                ["Two-Face","B",6,18],
+               'THE MINGLER':             ["Mingler","B",7,"24G"],
+               'MR. HOLLYWOOD':           ["Mr Hollywood","B",8,"20G"],
                'decode': {'B':'Boss','C':"Cash","L":"Law","S":"Sell"}
             },
          };
@@ -121,8 +121,9 @@ async function THQPlus() {
          //cog.innerText=invInfo(cog.innerText);
          //cog.style.fontsize="12px";
          let distnode = i.childNodes[1],dist=distnode.innerText.split("\n")[1];
+console.log(distnode);         
          let [cogname,cogtype,coglvl,cogGA] = getCogInfo(i.childNodes[0].innerText); 
-         distnode.innerHTML=`<b>${cogtype}, ${coglvl}${cogGA}<br>${dist}`;
+         distnode.innerHTML=`<b>${cogtype} ${coglvl}${cogGA}<br>${dist}`;
          i.parentElement.style.height="130px";
       });
    }
@@ -172,7 +173,7 @@ async function THQPlus() {
       let [cogshortname,cogtype,coglevel,groupattack]=lookup.cog[cognameuc];
       coglevel=`${coglevel}-${Number(coglevel)+4}`;
       if (groupattack) {groupattack=" (GA)"} else {groupattack=""}
-      return [cogname,cogtype+lookup.cog.decode[cogtype]+"bot",'lvl '+coglevel,groupattack];
+      return [cogname,lookup.cog.decode[cogtype]+"bot",'level '+coglevel,groupattack];
    }   
    
    function neighborhood(street) {
