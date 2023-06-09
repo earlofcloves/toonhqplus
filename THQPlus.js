@@ -117,13 +117,13 @@ async function THQPlus() {
       if (debug) {console.log("update invasions")}      
       const invs=document.getElementsByClassName("info-card__content");
       Array.from(invs).forEach(i=>{
-         let cog = i.childNodes[0];
+         //let cog = i.childNodes[0];
          //cog.innerText=invInfo(cog.innerText);
-         cog.style.fontsize="12px";
-         let dist = i.childNodes[1];
-         //dist.innerText="xxx"+dist.innerText;
+         //cog.style.fontsize="12px";
+         let distnode = i.childNodes[1],dist=distnode.innerText.split("\n")[1];
+         let [cogname,cogtype,coglvl,cogGA] = getCogInfo(i.childNodes[0].innetText); 
+         distnode.innerHTML=`<b>${cogtype}, ${coglvl}${cogGA}<br>${dist}`;
          i.parentElement.style.height="130px";
-         console.log("invcoginfo",getCogInfo(cog.innerText));
       });
    }
    
@@ -171,7 +171,7 @@ async function THQPlus() {
       let [cogshortname,cogtype,coglevel,groupattack]=lookup.cog[cogname];
       coglevel=`${coglevel}-${Number(coglevel)+4}`;
       if (groupattack) {groupattack=" (GA)"} else {groupattack=""}
-      return [lookup.cog.decode[cogtype]+"bot",coglevel,groupattack];
+      return [lookup.cog.decode[cogtype]+"bot",'lvl '+coglevel,groupattack];
    }   
    
    function neighborhood(street) {
