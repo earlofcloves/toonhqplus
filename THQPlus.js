@@ -166,12 +166,13 @@ async function THQPlus() {
    }
    
    function getCogInfo(cog) {
-      const cogname=cog.replace(/\x03/g,"").replace(/\u0003/g,"").toUpperCase();
-      if (!lookup.cog[cogname]) {return [cog,"?",""]}
-      let [cogshortname,cogtype,coglevel,groupattack]=lookup.cog[cogname];
+      const cogname=cog.replace(/\x03/g,"").replace(/\u0003/g,"");
+      const cognameuc=cogname.toUpperCase();
+      if (!lookup.cog[cognameuc]) {return [cog,"?",""]}
+      let [cogshortname,cogtype,coglevel,groupattack]=lookup.cog[cognameuc];
       coglevel=`${coglevel}-${Number(coglevel)+4}`;
       if (groupattack) {groupattack=" (GA)"} else {groupattack=""}
-      return [lookup.cog.decode[cogtype]+"bot",'lvl '+coglevel,groupattack];
+      return [cogname,cogtype+lookup.cog.decode[cogtype]+"bot",'lvl '+coglevel,groupattack];
    }   
    
    function neighborhood(street) {
