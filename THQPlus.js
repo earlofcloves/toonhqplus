@@ -35,7 +35,7 @@ async function THQPlus() {
                'CORPORATE RAIDER':        ["Corp Raider","B",7,15],
                'THE BIG CHEESE':          ["Big Cheese","B",8,17],
                'BOTTOM FEEDER':           ["Bottom Feeder","L",1,4],
-               'BLOODUSCKER':             ["Blood Sucker","L",2,7],
+               'BLOODSUCKER':             ["Blood Sucker","L",2,7],
                'DOUBLE TALKER':           ["Dbl Talker","L",3,5],
                'AMBULANCE CHASER':        ["Amb Chaser","L",4,8],
                'BACK STABBER':            ["Back Stabber","L",5,"10G"],
