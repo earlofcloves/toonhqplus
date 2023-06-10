@@ -151,7 +151,7 @@ async function THQPlus() {
             //console.log("groupcoginfo");console.log(district);console.log(districtv);console.log(inv[districtv]);console.log(inv[districtv].type);
             //console.log("cogtyp: ",inv[districtv].type);
             let [cogname,cogtype,coglvl,avgattack] = getCogInfo(inv[districtv].type); 
-            district.innerHTML=`${districtv}<br><span style="border:2px dotted red;"><span><b>${cogname} ${cogtype} Invasion<br><i>&nbsp;&nbsp;- Level ${coglvl}, AvgAttack ${avgattack}</i></b></span></span>`;   
+            district.innerHTML=`${districtv}<br><span style="color:#880000;"><span><b>${cogname} ${cogtype} Invasion<br><i>&nbsp;&nbsp;- Level ${coglvl}, AvgAttack ${avgattack}</i></b></span></span>`;   
             g.parentElement.style.height="130px";
          }
       });
