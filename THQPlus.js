@@ -144,7 +144,7 @@ async function THQPlus() {
          if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>'+neighborhood(streetv)+'</i>'}
          if (inv[districtv] && invtypev.includes('BUILDING')) {
             let [cogname,cogtype,coglvl,avgattack] = getCogInfo(inv[districtv].type); 
-            district.innerHTML=`${districtv}<br><span style="color:#880000;"><span><center><b>${cogname} ${cogtype} Invasion</center><br>`+
+            district.innerHTML=`${districtv}<br><span style="color:#880000;"><span><center><b>${cogname} ${cogtype} Invasion</center>`+
                                `<center><i>** Level ${coglvl}, AvgAttack ${avgattack} **</center></i></b></span></span>`;   
             g.parentElement.style.height="130px";
          }
