@@ -123,7 +123,7 @@ async function THQPlus() {
          const distnode=i.getElementsByTagName("P")[0], dist=distnode.innerText.split("\n");
          let distname=dist[2]; if (!distname) {distname=dist[0]}
          let [cogname,cogtype,coglvl,avgattack] = getCogInfo(i.childNodes[0].innerText); 
-         distnode.innerHTML=`<b>${cogtype}<br>Level ${coglvl}, AvgAttack ${avgattack}</b><br><span style="color:#880000">${distname}</span>`;
+         distnode.innerHTML=`<b>${cogtype}<br>Level ${coglvl}, AvgAttack ${avgattack}<br><span style="color:#880000">${distname}</span></b>`;
          i.parentElement.style.height="150px";
       });
    }
