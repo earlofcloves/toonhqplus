@@ -117,13 +117,10 @@ async function THQPlus() {
       if (debug) {console.log("update invasions")}      
       const invs=document.getElementsByClassName("info-card__content");
       Array.from(invs).forEach(i=>{
-         //let cog = i.childNodes[0];
-         //cog.innerText=invInfo(cog.innerText);
-         //cog.style.fontsize="12px";
          const distnode=i.getElementsByTagName("P")[0], dist=distnode.innerText.split("\n");
          let distname=dist[2]; if (!distname) {distname=dist[0]}
          let [cogname,cogtype,coglvl,avgattack] = getCogInfo(i.childNodes[0].innerText); 
-         distnode.innerHTML=`<b>${cogtype}<br>Level ${coglvl}, AvgAttack ${avgattack}<br><span style="color:#880000">${distname}</span></b>`;
+         distnode.innerHTML=`<b>${cogtype}<br>Level ${coglvl}, AvgAttack ${avgattack}<br><span style="color:#CC0000">${distname}</span></b>`;
          i.parentElement.style.height="150px";
       });
    }
@@ -146,29 +143,12 @@ async function THQPlus() {
          const district = g.childNodes[2], districtv=district.innerText.split("\n")[0];
          if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>'+neighborhood(streetv)+'</i>'}
          if (inv[districtv] && invtypev.includes('BUILDING')) {
-            //const [cogsKilled,cogsTotal] = inv[districtv].progress.split('/'); const cogsLeft=cogsTotal-cogsKilled; 
-            //district.innerHTML=`${districtv}<br><b><i>Invasion ${-Info(inv[districtv].type)}</i></b>`;    
-            //console.log("groupcoginfo");console.log(district);console.log(districtv);console.log(inv[districtv]);console.log(inv[districtv].type);
-            //console.log("cogtyp: ",inv[districtv].type);
             let [cogname,cogtype,coglvl,avgattack] = getCogInfo(inv[districtv].type); 
             district.innerHTML=`${districtv}<br><span style="color:#880000;"><span><b>${cogname} ${cogtype} Invasion<br><i>&nbsp;&nbsp;- Level ${coglvl}, AvgAttack ${avgattack}</i></b></span></span>`;   
             g.parentElement.style.height="130px";
          }
       });
    }  
-   
-   function invInfo(cog) {
-      const coginfo=lookup.cog[decodeCogname(cog)];
-      if (debug) {console.log(decodeCogname(cog))}
-      if (coginfo) {
-         let [dispname,type,lev,gattack]=coginfo;
-         if (dispname=="") {dispname=cog}
-         lev=`${lev}-${Number(lev)+4}`;
-         if (gattack) {gattack="*"} else {gattack=""}
-         return `${dispname} ${lookup.cog.decode[type]} L${lev}${gattack}`;
-      }
-      else {return cog}
-   }
    
    function getCogInfo(cog) {
       const cogname=cog.replace(/\x03/g,"").replace(/\u0003/g,"");
