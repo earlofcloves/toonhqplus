@@ -153,8 +153,8 @@ async function THQPlus() {
             g.parentElement.style.height="130px";
          }
          let [tooncurr,toontot,trash]=toonctv.split(/[\s\/]+/),toonpct=Number(tooncurr/toontot);
-         if (toonpct==1) {=g.parentElement.style.backgroundColor="#f9c9c9"}
-         else if (toonpct>=.75) {=g.parentElement.style.backgroundColor="#f5f515"}
+         if (toonpct==1) {g.parentElement.style.backgroundColor="#f9c9c9"}
+         else if (toonpct>=.75) {g.parentElement.style.backgroundColor="#f5f515"}
          console.log(tooncurr,toontot,Number(tooncurr/toontot));
       });
    }  
