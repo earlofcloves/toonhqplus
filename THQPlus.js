@@ -141,7 +141,9 @@ async function THQPlus() {
          const invtype = g.childNodes[0], invtypev=invtype.innerText;
          const street = g.childNodes[1], streetv=street.innerText.split(" (")[0];
          const district = g.childNodes[2], districtv=district.innerText.split("\n")[0];
-         if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>'+neighborhood(streetv)+'</i>'}
+         const toonct = g.childNodes[3], toonctv=toonct.innerText;
+         if (neighborhood(streetv)) {street.innerHTML='<center>'+streetv+' <i>'+neighborhood(streetv)+'</i></center>'}
+         toonct.innerHTML=`<center>${toonctv}</center>`;
          if (inv[districtv] && invtypev.includes('BUILDING')) {
             let [cogname,cogtype,coglvl,avgattack] = getCogInfo(inv[districtv].type); 
             district.innerHTML=`${districtv}<br><span style="color:#880000;"><span><center><b>${cogname} ${cogtype} Invasion</center>`+
