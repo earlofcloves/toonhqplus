@@ -142,9 +142,9 @@ async function THQPlus() {
          const street = g.childNodes[1], streetv=street.innerText.split(" (")[0];
          const district = g.childNodes[2], districtv=district.innerText.split("\n")[0];
          const toonct = g.childNodes[3], toonctv=toonct.innerText;
-         invtype.innerHTML=`<center>${invtypev}</center>`;
+         invtype.innerHTML=`<u>${invtypev}</u>`;
          if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>'+neighborhood(streetv)+'</i>'}
-         streetv.innerHTML=`<center>${street.innerHTML}</center>`;
+         street.innerHTML=`<center>${street.innerHTML}</center>`;
          toonct.innerHTML=`<center>${toonctv}</center>`;
          if (inv[districtv] && invtypev.includes('BUILDING')) {
             let [cogname,cogtype,coglvl,avgattack] = getCogInfo(inv[districtv].type); 
@@ -152,6 +152,8 @@ async function THQPlus() {
                                `<center><i>** Level ${coglvl}, AvgAttack ${avgattack} **</center></i></b></span></span>`;   
             g.parentElement.style.height="130px";
          }
+         let [tooncurr,toontot,trash]=toonctv.split(/[\s\/]+/);
+         console.log(tooncurr,toontot,Number(tooncurr/toontot));
       });
    }  
    
