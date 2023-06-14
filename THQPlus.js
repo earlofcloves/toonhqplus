@@ -148,10 +148,11 @@ async function THQPlus() {
          toonct.innerHTML=`<center>${toonctv}</center>`;
          if (inv[districtv] && invtypev.includes('BUILDING')) {
             let [cogname,cogtype,coglvl,avgattack] = getCogInfo(inv[districtv].type); 
-            district.innerHTML=`${districtv}<br><span style="color:#880000;"><span><center><b>${cogname} ${cogtype} Invasion</center>`+
+            district.innerHTML=`$<span><center>{districtv}</center><center></span><span style="color:#880000;"><span><center><b>${cogname} ${cogtype} Invasion</center>`+
                                `<center><i>** Level ${coglvl}, AvgAttack ${avgattack} **</center></i></b></span></span>`;   
             g.parentElement.style.height="130px";
          }
+         else {district.innerHTML=`<center>${districtv}</center>`;}
          let [tooncurr,toontot,trash]=toonctv.split(/[\s\/]+/),toonpct=Number(tooncurr/toontot);
          if (toonpct==1) {g.parentElement.style.backgroundColor="#f9c9c9"}
          else if (toonpct>=.75) {g.parentElement.style.backgroundColor="#f5f515"}
