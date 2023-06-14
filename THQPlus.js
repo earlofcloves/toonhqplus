@@ -142,7 +142,7 @@ async function THQPlus() {
          const street = g.childNodes[1], streetv=street.innerText.split(" (")[0];
          const district = g.childNodes[2], districtv=district.innerText.split("\n")[0];
          const toonct = g.childNodes[3], toonctv=toonct.innerText;
-         invtype.innerHTML=`<u>${invtypev}</u>`;
+         // invtype.innerHTML=`<u>${invtypev}</u>`;
          if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>'+neighborhood(streetv)+'</i>'}
          street.innerHTML=`<center>${street.innerHTML}</center>`;
          toonct.innerHTML=`<center>${toonctv}</center>`;
@@ -152,7 +152,9 @@ async function THQPlus() {
                                `<center><i>** Level ${coglvl}, AvgAttack ${avgattack} **</center></i></b></span></span>`;   
             g.parentElement.style.height="130px";
          }
-         let [tooncurr,toontot,trash]=toonctv.split(/[\s\/]+/);
+         let [tooncurr,toontot,trash]=toonctv.split(/[\s\/]+/),toonpct=Number(tooncurr/toontot);
+         if (toonpct==1) {=g.parentElement.style.backgroundColor="#f9c9c9"}
+         else if (toonpct>=.75) {=g.parentElement.style.backgroundColor="#f5f515"}
          console.log(tooncurr,toontot,Number(tooncurr/toontot));
       });
    }  
