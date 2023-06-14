@@ -143,6 +143,7 @@ async function THQPlus() {
          const district = g.childNodes[2], districtv=district.innerText.split("\n")[0];
          const toonct = g.childNodes[3], toonctv=toonct.innerText;
          if (invtypev.length<24) {invtype.innetText="&nbsp;".repeat(Math.floor((24-invtypev.length)/2))+invtypev}
+         console.log("xxx".invtype.length,Math.floor((24-invtypev.length)/2)."&nbsp;".repeat(Math.floor((24-invtypev.length)/2)));
          // invtype.innerHTML=`<u>${invtypev}</u>`;
          if (neighborhood(streetv)) {street.innerHTML=streetv+' <i>'+neighborhood(streetv)+'</i>'}
          street.innerHTML=`<center>${street.innerHTML}</center>`;
